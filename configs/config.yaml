@@ -1,0 +1,81 @@
+# 森林多模态灾害监测系统配置文件
+
+# 应用基础配置
+app_name: "森瞳森林多模态灾害监测系统"
+theme: "dark"
+update_interval: 60
+baidu_map_key: "F47f0642o1uGqSGnm3T6JLxHHLOjnx2T"
+baidu_map_domain: "localhost"
+
+# 模型配置
+model_size: s                   # YOLOv5模型大小：n, s, m, l, x
+num_classes_fire: 2             # 火灾类别数（火焰、烟雾）
+num_classes_animal: 5           # 动物类别数（可根据保护区内具体动物调整）
+num_classes_landslide: 3        # 地质灾害类别数（滑坡、泥石流、山体崩塌）
+conf_threshold: 0.25            # 检测置信度阈值
+iou_threshold: 0.45             # NMS IOU阈值
+
+# 数据配置
+image_size: 640                 # 输入图像大小
+batch_size: 16                  # 批次大小
+data_augmentation: true         # 是否使用数据增强
+
+# 训练配置
+learning_rate: 0.01             # 学习率
+weight_decay: 0.0005            # 权重衰减
+epochs: 100                     # 训练轮数
+save_interval: 10               # 模型保存间隔
+
+# 系统配置
+device: cuda:0                  # 设备，cuda:0或cpu
+num_workers: 4                  # 数据加载线程数
+weights_path: weights           # 权重保存路径
+logs_path: logs                 # 日志保存路径
+
+# 监测区域配置
+monitor_regions:
+  - name: "北京密云"
+    latitude: 40.3764
+    longitude: 116.8301
+    radius: 5
+    priority: high
+  - name: "杭州西湖"
+    latitude: 30.2650
+    longitude: 120.1331
+    radius: 3
+    priority: medium
+  - name: "四川卧龙"
+    latitude: 31.0500
+    longitude: 103.1500
+    radius: 10
+    priority: high
+
+# GIS集成配置
+gis_api_key: ""                 # GIS API密钥
+map_center: [39.916527, 116.397128]
+map_zoom: 12
+
+# UI配置
+dark_mode: true                 # 是否使用暗色模式
+language: zh_CN                 # 语言设置
+auto_refresh: 60                # 自动刷新间隔（秒）
+
+# 告警配置
+alert_threshold: 0.75           # 告警阈值
+alert_methods: [ui, sound]      # 告警方式：ui界面、声音
+alert_interval: 30              # 告警间隔（秒）
+random_alert:                   # 随机告警配置
+  enabled: false               # 是否启用随机告警
+  interval: 5                  # 随机告警检查间隔（秒）
+  probability: 0.3             # 生成告警的概率（0-1）
+  types:                       # 可能的告警类型
+    - fire                     # 火灾
+    - animal                   # 野生动物
+    - landslide               # 山体滑坡
+    - pest                    # 病虫害
+  locations:                   # 可能的告警位置
+    - 北部山区
+    - 南部林区
+    - 东部山脊
+    - 西部谷地
+    - 中央林场 

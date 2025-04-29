@@ -1,0 +1,34 @@
+
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="utf-8" />
+            <title>森林监控地图</title>
+            <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=您的百度地图密钥"></script>
+            <style>
+                html, body, #map {
+                    height: 100%;
+                    margin: 0;
+                    padding: 0;
+                }
+            </style>
+        </head>
+        <body>
+            <div id="map"></div>
+            <script>
+                var map = new BMap.Map("map");
+                var point = new BMap.Point(116.397128, 39.916527);
+                map.centerAndZoom(point, 12);
+                map.enableScrollWheelZoom();
+                map.addControl(new BMap.NavigationControl());
+                map.addControl(new BMap.ScaleControl());
+                map.addControl(new BMap.OverviewMapControl());
+                map.addControl(new BMap.MapTypeControl());
+                
+                // 添加定位控件
+                var geolocationControl = new BMap.GeolocationControl();
+                map.addControl(geolocationControl);
+            </script>
+        </body>
+        </html>
+        
