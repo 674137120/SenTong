@@ -251,31 +251,48 @@ python main.py --config configs/custom_config.yaml
 
 ```
 project_root/
-├── main.py                 # 程序入口
-├── requirements.txt        # 依赖清单
-├── README.md              # 项目文档
-├── LICENSE                # 许可证
-├── configs/               # 配置文件目录
-│   ├── config.yaml       # 主配置文件
-│   └── logging.yaml      # 日志配置
-├── core/                 # 核心功能模块
-│   ├── detection/       # 检测算法
-│   ├── tracking/        # 目标跟踪
-│   └── analysis/        # 数据分析
-├── ui/                   # 界面相关代码
-│   ├── components/      # UI组件
-│   ├── pages/          # 页面
-│   └── assets/         # 资源文件
-├── utils/               # 工具函数
-│   ├── video.py        # 视频处理
-│   ├── gis.py         # 地理信息
-│   └── logger.py      # 日志工具
-├── data/                # 数据目录
-│   ├── models/        # 模型文件
-│   └── records/       # 记录数据
-└── tests/              # 测试代码
-    ├── unit/          # 单元测试
-    └── integration/   # 集成测试
+├── main.py                    # 主程序入口
+├── README.md                  # 项目说明文档
+├── requirements.txt           # 项目依赖
+├── map_temp.html             # 地图临时文件
+│
+├── ui/                       # 用户界面相关
+│   ├── assets/              # 静态资源
+│   ├── components/          # UI组件
+│   │   ├── alert_panel.py      # 告警面板
+│   │   ├── camera_view.py      # 摄像头视图
+│   │   ├── control_panel.py    # 控制面板
+│   │   ├── drone_manager.py    # 无人机管理
+│   │   ├── grid_camera_view.py # 网格摄像头视图
+│   │   ├── map_view.py         # 地图视图
+│   │   └── statistics_panel.py # 统计面板
+│   ├── pages/               # 页面
+│   │   └── main_window.py   # 主窗口
+│   └── splash_screen.py     # 启动画面
+│
+├── configs/                  # 配置文件
+│   ├── config.yaml          # 主配置
+│   └── yolov5s.yaml        # YOLOv5模型配置
+│
+├── utils/                   # 工具函数
+│   ├── loggers/            # 日志工具
+│   ├── aws/                # AWS相关工具
+│   ├── config_loader.py    # 配置加载器
+│   ├── camera_detector.py  # 摄像头检测器
+│   ├── torch_utils.py      # PyTorch工具
+│   ├── metrics.py          # 评估指标
+│   ├── plots.py           # 绘图工具
+│   ├── loss.py            # 损失函数
+│   ├── general.py         # 通用工具
+│   ├── datasets.py        # 数据集处理
+│   └── ...                # 其他工具函数
+│
+├── models/                  # 模型相关
+├── weights/                # 模型权重
+├── results/                # 结果输出
+├── scripts/                # 脚本文件
+├── resources/              # 资源文件
+└── data/                   # 数据文件
 ```
 
 ### 2. 开发规范
